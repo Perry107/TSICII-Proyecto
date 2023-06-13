@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin-deployment
+spec:
+  selector:
+    matchLabels:
+      app: card
+  template:
+    metadata:
+      labels:
+        app: card
+    spec:
+      containers:
+      - name: phpmyadmin
+        image: perry107/phpmyadmin:phpmyadmincard
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: phpmyadmin-data
+        ports:
+        - containerPort: 80
+      volumes:
+      - name: phpmyadmin-data
+        persistentVolumeClaim:
+          claimName: phpmyadmin-pvc-claim
