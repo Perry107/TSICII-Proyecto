@@ -15,7 +15,7 @@ spec:
       - name: phpmyadmin
         image: perry107/phpmyadmin:phpmyadmincard
         volumeMounts:
-        - mountPath: /var/www/html
+        - mountPath: /var/www/html/data
           name: phpmyadmin-data
         ports:
         - containerPort: 80
