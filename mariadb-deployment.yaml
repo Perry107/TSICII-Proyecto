@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-deployment
+spec:
+  selector:
+    matchLabels:
+      app: mariadb
+  template:
+    metadata:
+      labels:
+        app: mariadb
+    spec:
+      containers:
+      - name: mariadb
+        image: perry107/mariadb:mariadbcard
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: mariadb-data
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: mysqlrootpassword
+        - name: MYSQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: mysqldatabase
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: mysqluser
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: mysqlpassword
+      volumes:
+      - name: mariadb-data
+        persistentVolumeClaim:
+          claimName: mariadb-pvc-claim
