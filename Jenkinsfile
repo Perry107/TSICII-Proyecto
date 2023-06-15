@@ -10,9 +10,6 @@ pipeline {
         checkout([$class: 'GitSCM', branches: [[name: '*/version2']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Perry107/TSICII-Proyecto']]])
       }
     }
-    stage('tag image'){
-        env.GIT_TAG_NAME= version2
-    }
     stage('Build image') {
       steps{
         script {
@@ -35,7 +32,7 @@ pipeline {
     stage('Deploying card to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: 'phpmyadmin-deployment2.yaml',kubeconfigId: 'k8s')
+          kubernetesDeploy(configs: 'phpmyadmin-deployment.yaml',kubeconfigId: 'k8s')
         }
       }
     }
