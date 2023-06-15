@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('Checkout Source') {
       steps {
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Perry107/TSICII-Proyecto']]])
+        checkout([$class: 'GitSCM', branches: [[name: '*/version2']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Perry107/TSICII-Proyecto']]])
       }
     }
     stage('Build image') {
