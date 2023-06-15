@@ -1,7 +1,7 @@
 pipeline {
   environment {
-    dockerimagename = "perry107/phpmyadmin:phpmyadmincard"
-    dockerImage = "perry107/phpmyadmin:phpmyadmincard"
+    dockerimagename = "perry107/phpmyadmin:phpmyadmincard2"
+    dockerImage = "perry107/phpmyadmin:phpmyadmincard2"
   }
   agent any
   stages {
@@ -32,7 +32,7 @@ pipeline {
     stage('Deploying card to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: 'phpmyadmin-deployment.yaml',kubeconfigId: 'k8s')
+          kubernetesDeploy(configs: 'phpmyadmin-deployment2.yaml',kubeconfigId: 'k8s')
         }
       }
     }

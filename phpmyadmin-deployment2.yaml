@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: phpmyadmin-deployment
+  name: phpmyadmin-deployment2
 spec:
   selector:
     matchLabels:
@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: phpmyadmin
-        image: perry107/phpmyadmin:phpmyadmincard
+        image: perry107/phpmyadmin:phpmyadmincard2
         volumeMounts:
         - mountPath: /var/www/html/data
           name: phpmyadmin-data
