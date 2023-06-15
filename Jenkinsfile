@@ -1,7 +1,7 @@
 pipeline {
   environment {
-    dockerimagename = "perry107/phpmyadmin:phpmyadmincard2"
-    dockerImage = "perry107/phpmyadmin:phpmyadmincard2"
+    dockerimagename = "perry107/phpmyadmin:phpmyadmincard"
+    dockerImage = "perry107/phpmyadmin:phpmyadmincard"
   }
   agent any
   stages {
@@ -9,6 +9,9 @@ pipeline {
       steps {
         checkout([$class: 'GitSCM', branches: [[name: '*/version2']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Perry107/TSICII-Proyecto']]])
       }
+    }
+    stage('tag image'){
+        env.GIT_TAG_NAME= version2
     }
     stage('Build image') {
       steps{
