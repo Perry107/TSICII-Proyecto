@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: phpmyadmin-deployment2
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: card
