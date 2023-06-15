@@ -32,7 +32,7 @@ pipeline {
     stage('Deploying card to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: 'phpmyadmin-deployment.yaml',kubeconfigId: 'K8s')
+          kubernetesDeploy(configs: 'phpmyadmin-deployment.yaml',kubeconfigId: 'k8s')
         }
       }
     }
