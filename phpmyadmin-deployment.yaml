@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: phpmyadmin
-        image: perry107/phpmyadmin:phpmyadmincard
+        image: perry107/phpmyadmin:latest
         volumeMounts:
         - mountPath: /var/www/html/data
           name: phpmyadmin-data
